@@ -24,9 +24,9 @@ public class UserEntity {
 	private String contactNum;
 	private String city;
 	private String collegeName;
-	private Integer courseId;//fk
+	private Integer courseId;//foreign key , dropdown
 	private String semester;
-	private String languageKnown;
+	private String languageKnown; //take languages from languages table language column and push data in DB by comma separator , show all languages to user and user can Select multiple selection in Languages
 	private String reference;
-	private Integer roleId;// fk
+	private Integer roleId;// foreign key , dropdown
 }
