@@ -95,7 +95,7 @@
                         <a href="/hackathonJudges/edit/${judge.hackathonJudgeId}" class="edit">Edit</a>
                         <a href="/hackathonJudges/delete/${judge.hackathonJudgeId}" class="delete">Delete</a>
                         <a href="/hackathonJudges/view/${judge.hackathonJudgeId}" class="view">View</a>
-                    </td>
+                    </td>	
                 </tr>
             </c:forEach>
         </tbody>
