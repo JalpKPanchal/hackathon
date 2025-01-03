@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,17 +39,17 @@
                     <label for="teamName" class="form-label">Team Name</label>
                     <input type="text" class="form-control" name="teamName" id="teamName" placeholder="Enter your team name" required>
                 </div>
-                 <div class="mb-3">
-    <label for="hackathon" class="form-label">Select Hackathon</label>
-    <select class="form-select" name="hackathon.hackathonId" id="hackathonId" required>
+                   <div class="mb-3">
+                    <label for="hackathon" class="form-label">Select Hackathon</label>
+                    <select class="form-select" name="hackathonId" id="hackathonId" required>
                         <option value="" disabled selected>Select a hackathon</option>
-                        <!-- Populate dropdown with hackathons -->
+                        <!-- Use JSTL to iterate through the hackathons list -->
                         <c:forEach var="hackathon" items="${hackathons}">
                             <option value="${hackathon.hackathonId}">${hackathon.title}</option>
                         </c:forEach>
                     </select>
+                </div>
 
-</div>
                  
                 
                 <div class="d-grid">
