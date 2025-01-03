@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="contactNo" class="form-label">Contact Number</label>
-                                <input type="text" class="form-control" name="contactNo" id="contactNo" required>
+                                <input type="text" class="form-control" name="contactNum" id="contactNo" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="gender" class="form-label">Gender</label>
@@ -53,11 +53,11 @@
                                 <label for="collegeName" class="form-label">College Name</label>
                                 <input type="text" class="form-control" name="collegeName" id="collegeName" required>
                             </div>
-                            <div class="col-md-6 mb-3">
+                         <div class="col-md-6 mb-3">
                                 <label for="courseName" class="form-label">Course Name</label>
-                                <input type="text" class="form-control" name="courseName" id="courseName" required>
-                            </div>
-                        </div>
+                                <input type="text" class="form-control" name="courseId" id="courseName" required>
+                          </div>
+                        </div>         
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="semester" class="form-label">Semester</label>
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="referenceName" class="form-label">Reference Name</label>
-                                <input type="text" class="form-control" name="referenceName" id="referenceName">
+                                <input type="text" class="form-control" name="reference" id="referenceName">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Sign Up</button>

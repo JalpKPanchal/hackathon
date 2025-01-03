@@ -15,15 +15,13 @@ public class TeamEntity {
     @Column(nullable = false, unique = true)
     private String teamName;
 
-    @Column(nullable = false)
-    private int currentMembers;
-
-    @Column(nullable = false)
-    private int maxMembers;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TeamStatus status;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "hackathon_id", nullable = false)
@@ -33,5 +31,6 @@ public class TeamEntity {
         IN_PROGRESS, ACCEPT, REJECT, DISQUALIFY
     }
 
+    private String createdAt; 
     // Add more fields if needed, e.g., createdDate or createdBy
 }

@@ -2,6 +2,9 @@ package com.controller;
 
 import com.entity.UserEntity;
 import com.repository.UserRepository;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,12 +24,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam String email, @RequestParam String password, Model model) {
+    public String loginUser(@RequestParam String email, @RequestParam String password, Model model,HttpSession session) {
         UserEntity user = userRepository.findByEmail(email)
                 .orElse(null);
 
         if (user != null && user.getPassword().equals(password)) {
             model.addAttribute("user", user);
+            session.setAttribute("user", user);
             return "Dashboard";
         } else {
             model.addAttribute("error", "Invalid email or password!");

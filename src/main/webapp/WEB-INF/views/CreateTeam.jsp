@@ -37,7 +37,7 @@
             <form action="/teams/create" method="post">
                 <div class="mb-3">
                     <label for="teamName" class="form-label">Team Name</label>
-                    <input type="text" class="form-control" name="teamName" id="teamName" placeholder="Enter your team name" required>
+                    <input type="text" class="form-control" name="teamName" id="teamName" value="${teamName}" placeholder="Enter your team name" required>
                 </div>
                    <div class="mb-3">
                     <label for="hackathon" class="form-label">Select Hackathon</label>
@@ -49,7 +49,7 @@
                         </c:forEach>
                     </select>
                 </div>
-
+               
                  
                 
                 <div class="d-grid">
@@ -59,7 +59,8 @@
                     <a href="/dashboard" class="text-decoration-none">Cancel</a>
                 </div>
             </form>
-        </div>
+        	<br> 
+        	${error}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
