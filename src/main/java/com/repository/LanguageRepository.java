@@ -7,4 +7,5 @@ import com.entity.LanguageEntity;
 
 @Repository
 public interface LanguageRepository extends JpaRepository<LanguageEntity, Integer> {
+	
 }

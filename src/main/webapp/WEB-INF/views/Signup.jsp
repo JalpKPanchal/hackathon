@@ -1,9 +1,13 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet">
     <title>Sign Up</title>
 </head>
 <body class="bg-light">
@@ -48,16 +52,22 @@
                                 </select>
                             </div>
                         </div>
+                        
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="collegeName" class="form-label">College Name</label>
                                 <input type="text" class="form-control" name="collegeName" id="collegeName" required>
                             </div>
-                         <div class="col-md-6 mb-3">
-                                <label for="courseName" class="form-label">Course Name</label>
-                                <input type="text" class="form-control" name="courseId" id="courseName" required>
-                          </div>
-                        </div>         
+                            <div class="col-md-6 mb-3">
+                                <label for="courseId" class="form-label">Course</label>
+                                <select class="form-select" id="courseId" name="courseId" required>
+                                    <option value="">Select Course</option>
+                                    <c:forEach var="course" items="${courses}">
+                                        <option value="${course.courseid}">${course.courseName}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="semester" class="form-label">Semester</label>
@@ -68,16 +78,24 @@
                                 <input type="text" class="form-control" name="city" id="city" required>
                             </div>
                         </div>
+					<div class="row mb-3">
+					    <div class="col">
+					        <label for="languages" class="form-label">Languages Known</label>
+					        <select class="form-select" id="languages" name="languages" multiple required>
+					            <c:forEach var="language" items="${languages}">
+					                <option value="${language.languageId}">${language.language}</option>
+					            </c:forEach>
+					        </select>
+					    </div>
+					</div>
+
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="languageKnown" class="form-label">Languages Known</label>
-                                <input type="text" class="form-control" name="languageKnown" id="languageKnown" required>
-                            </div>
                             <div class="col-md-6 mb-3">
                                 <label for="referenceName" class="form-label">Reference Name</label>
                                 <input type="text" class="form-control" name="reference" id="referenceName">
                             </div>
                         </div>
+                       
                         <button type="submit" class="btn btn-primary w-100">Sign Up</button>
                         <p class="text-center mt-3">Already have an account? <a href="/auth/login">Login</a></p>
                     </form>
@@ -85,5 +103,17 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+    <script>
+        // Initialize Select2 for multiple select
+        $(document).ready(function() {
+            $('#languages').select2({
+                placeholder: "Select languages",
+                allowClear: true
+            });
+        });
+    </script>
 </body>
 </html>
