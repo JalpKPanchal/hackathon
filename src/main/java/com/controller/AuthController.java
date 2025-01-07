@@ -75,4 +75,25 @@ public class AuthController {
         model.addAttribute("message", "Registration successful!");
         return "Login";
     }
+    
+    @GetMapping("/login")
+    public String loginPage() {
+        return "Login";
+    }
+
+    @PostMapping("/login")
+    public String loginUser(@RequestParam String email, @RequestParam String password, Model model,HttpSession session) {
+        UserEntity user = userRepository.findByEmail(email)
+                .orElse(null);
+
+        if (user != null && user.getPassword().equals(password)) {
+            model.addAttribute("user", user);
+            session.setAttribute("user", user);
+            return "Dashboard";
+        } else {
+            model.addAttribute("error", "Invalid email or password!");
+            return "Login";
+        }
+    }
+
 }
