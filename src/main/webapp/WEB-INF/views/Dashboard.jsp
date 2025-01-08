@@ -127,6 +127,7 @@
                     <p>Create or manage your team for the hackathon. A team must have 3-5 members with at least 1 female member.</p>
                     <a href="/teams/create" class="btn btn-primary">Create Team</a>
                     <a href="/teams/manage" class="btn btn-outline-primary">Manage Team</a>
+                    <a href="/teams/list" class="btn btn-success">List Teams</a>
                 </div>
             </div>
         </div>

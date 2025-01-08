@@ -3,21 +3,61 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet">
     <title>Sign Up</title>
+    
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Select2 CSS for enhanced select -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet">
+    
+    <style>
+        /* Custom styles for the form */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border-radius: 10px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control, .form-select {
+            border-radius: 8px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .select2-container .select2-selection--multiple {
+            border-radius: 8px;
+        }
+    </style>
 </head>
-<body class="bg-light">
+
+<body>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow p-4">
-                    <h2 class="text-center">Sign Up</h2>
+                    <h2 class="text-center mb-4">Sign Up</h2>
                     <form action="/auth/signup" method="post">
                         <div class="row">
+                            <!-- First Name and Last Name -->
                             <div class="col-md-6 mb-3">
                                 <label for="firstName" class="form-label">First Name</label>
                                 <input type="text" class="form-control" name="firstName" id="firstName" required>
@@ -27,7 +67,9 @@
                                 <input type="text" class="form-control" name="lastName" id="lastName" required>
                             </div>
                         </div>
+
                         <div class="row">
+                            <!-- Email and Password -->
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" name="email" id="email" required>
@@ -37,7 +79,9 @@
                                 <input type="password" class="form-control" name="password" id="password" required>
                             </div>
                         </div>
+
                         <div class="row">
+                            <!-- Contact Number and Gender -->
                             <div class="col-md-6 mb-3">
                                 <label for="contactNo" class="form-label">Contact Number</label>
                                 <input type="text" class="form-control" name="contactNum" id="contactNo" required>
@@ -52,12 +96,20 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="row">
+                            <!-- College Name Dropdown -->
                             <div class="col-md-6 mb-3">
                                 <label for="collegeName" class="form-label">College Name</label>
-                                <input type="text" class="form-control" name="collegeName" id="collegeName" required>
+                                <select class="form-select" name="collegeName" id="collegeName" required>
+                                    <option value="">Select College</option>
+                                    <c:forEach var="user" items="${users}">
+                                        <option value="${user.collegeName}">${user.collegeName}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
+                            
+                            <!-- Course Dropdown -->
                             <div class="col-md-6 mb-3">
                                 <label for="courseId" class="form-label">Course</label>
                                 <select class="form-select" id="courseId" name="courseId" required>
@@ -68,34 +120,52 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="row">
+                            <!-- Semester Dropdown -->
                             <div class="col-md-6 mb-3">
                                 <label for="semester" class="form-label">Semester</label>
-                                <input type="text" class="form-control" name="semester" id="semester" required>
+                                <select class="form-select" name="semester" id="semester" required>
+                                    <option value="">Select Semester</option>
+                                    <c:forEach var="user" items="${users}">
+                                        <option value="${user.semester}">${user.semester}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
+
+                            <!-- City Dropdown -->
                             <div class="col-md-6 mb-3">
                                 <label for="city" class="form-label">City</label>
-                                <input type="text" class="form-control" name="city" id="city" required>
+                                <select class="form-select" name="city" id="city" required>
+                                    <option value="">Select City</option>
+                                    <c:forEach var="user" items="${users}">
+                                        <option value="${user.city}">${user.city}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                         </div>
-					<div class="row mb-3">
-					    <div class="col">
-					        <label for="languages" class="form-label">Languages Known</label>
-					        <select class="form-select" id="languages" name="languages" multiple required>
-					            <c:forEach var="language" items="${languages}">
-					                <option value="${language.languageId}">${language.language}</option>
-					            </c:forEach>
-					        </select>
-					    </div>
-					</div>
 
+                        <div class="row mb-3">
+                            <!-- Languages Dropdown -->
+                            <div class="col">
+                                <label for="languages" class="form-label">Languages Known</label>
+                                <select class="form-select" id="languages" name="languages" multiple required>
+                                    <c:forEach var="language" items="${languages}">
+                                        <option value="${language.languageId}">${language.language}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Reference Name -->
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="referenceName" class="form-label">Reference Name</label>
                                 <input type="text" class="form-control" name="reference" id="referenceName">
                             </div>
                         </div>
-                       
+
+                        <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary w-100">Sign Up</button>
                         <p class="text-center mt-3">Already have an account? <a href="/auth/login">Login</a></p>
                     </form>
@@ -104,10 +174,11 @@
         </div>
     </div>
 
+    <!-- jQuery and Select2 JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
     <script>
-        // Initialize Select2 for multiple select
+        // Initialize Select2 for multiple select (Languages dropdown)
         $(document).ready(function() {
             $('#languages').select2({
                 placeholder: "Select languages",
@@ -116,4 +187,5 @@
         });
     </script>
 </body>
+
 </html>
