@@ -8,178 +8,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    
-    <!-- Bootstrap CSS for styling -->
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Select2 CSS for enhanced select -->
+    <!-- Select2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet">
-    
+
     <style>
-        /* Custom styles for the form */
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card {
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .form-label {
+        .card-header {
+            background-color: #2575fc;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
-        .form-control, .form-select {
-            border-radius: 8px;
+        .form-label {
+            font-weight: 600;
         }
 
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #6a11cb;
+            border-color: #6a11cb;
         }
 
         .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+            background-color: #2575fc;
+            border-color: #2575fc;
         }
 
-        .select2-container .select2-selection--multiple {
+        .select2-container--default .select2-selection--multiple {
             border-radius: 8px;
+        }
+
+        .footer-text a {
+            color: #2575fc;
         }
     </style>
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card shadow p-4">
-                    <h2 class="text-center mb-4">Sign Up</h2>
-                    <form action="/auth/signup" method="post">
-                        <div class="row">
-                            <!-- First Name and Last Name -->
-                            <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" name="firstName" id="firstName" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" name="lastName" id="lastName" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- Email and Password -->
-                            <div class="col-md-6 mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" name="password" id="password" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- Contact Number and Gender -->
-                            <div class="col-md-6 mb-3">
-                                <label for="contactNo" class="form-label">Contact Number</label>
-                                <input type="text" class="form-control" name="contactNum" id="contactNo" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="gender" class="form-label">Gender</label>
-                                <select class="form-select" name="gender" id="gender" required>
-                                    <option value="" disabled selected>Select Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- College Name Dropdown -->
-                            <div class="col-md-6 mb-3">
-                                <label for="collegeName" class="form-label">College Name</label>
-                                <select class="form-select" name="collegeName" id="collegeName" required>
-                                    <option value="">Select College</option>
-                                    <c:forEach var="user" items="${users}">
-                                        <option value="${user.collegeName}">${user.collegeName}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            
-                            <!-- Course Dropdown -->
-                            <div class="col-md-6 mb-3">
-                                <label for="courseId" class="form-label">Course</label>
-                                <select class="form-select" id="courseId" name="courseId" required>
-                                    <option value="">Select Course</option>
-                                    <c:forEach var="course" items="${courses}">
-                                        <option value="${course.courseid}">${course.courseName}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <!-- Semester Dropdown -->
-                            <div class="col-md-6 mb-3">
-                                <label for="semester" class="form-label">Semester</label>
-                                <select class="form-select" name="semester" id="semester" required>
-                                    <option value="">Select Semester</option>
-                                    <c:forEach var="user" items="${users}">
-                                        <option value="${user.semester}">${user.semester}</option>
-                                    </c:forEach>
-                                </select>
+                <div class="card">
+                    <div class="card-header">Sign Up</div>
+                    <div class="card-body">
+                        <form action="/auth/signup" method="post">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" name="firstName" id="firstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" name="lastName" id="lastName" required>
+                                </div>
                             </div>
 
-                            <!-- City Dropdown -->
-                            <div class="col-md-6 mb-3">
-                                <label for="city" class="form-label">City</label>
-                                <select class="form-select" name="city" id="city" required>
-                                    <option value="">Select City</option>
-                                    <c:forEach var="user" items="${users}">
-                                        <option value="${user.city}">${user.city}</option>
-                                    </c:forEach>
-                                </select>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <!-- Languages Dropdown -->
-                            <div class="col">
-                                <label for="languages" class="form-label">Languages Known</label>
-                                <select class="form-select" id="languages" name="languages" multiple required>
-                                    <c:forEach var="language" items="${languages}">
-                                        <option value="${language.languageId}">${language.language}</option>
-                                    </c:forEach>
-                                </select>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="contactNo" class="form-label">Contact Number</label>
+                                    <input type="text" class="form-control" name="contactNum" id="contactNo" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-select" name="gender" id="gender" required>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Reference Name -->
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="referenceName" class="form-label">Reference Name</label>
-                                <input type="text" class="form-control" name="reference" id="referenceName">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="collegeName" class="form-label">College Name</label>
+                                    <input type="text" class="form-control" name="collegeName" id="collegeName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="courseId" class="form-label">Course</label>
+                                    <select class="form-select" id="courseId" name="courseId" required>
+                                        <option value="">Select Course</option>
+                                        <c:forEach var="course" items="${courses}">
+                                            <option value="${course.courseid}">${course.courseName}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-                        <p class="text-center mt-3">Already have an account? <a href="/auth/login">Login</a></p>
-                    </form>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="languages" class="form-label">Languages Known</label>
+                                    <select class="form-select" id="languages" name="languageIds" multiple>
+                                        <c:forEach var="language" items="${languages}">
+                                            <option value="${language.languageId}">${language.language}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                            </div>
+                        </form>
+
+                        <p class="footer-text mt-4">
+                            Already have an account? <a href="/auth/login">Login</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- jQuery and Select2 JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
     <script>
-        // Initialize Select2 for multiple select (Languages dropdown)
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#languages').select2({
                 placeholder: "Select languages",
                 allowClear: true

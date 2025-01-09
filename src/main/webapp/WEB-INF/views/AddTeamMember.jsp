@@ -1,6 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +14,10 @@
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
-               <div class="mb-3">
+            <div class="mb-3">
                 <label for="role" class="form-label">Role</label>
                 <input type="text" class="form-control" id="role" name="role" required>
             </div>
-
-            
             <button type="submit" class="btn btn-primary">Send Invite</button>
         </form>
     </div>

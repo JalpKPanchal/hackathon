@@ -23,9 +23,6 @@ public class TeamMembersEntity {
     @Column(nullable = false)
     private Status status;
 
-    @Column(nullable = false)
-    private String role;
-
     public enum Status {
         INVITED,
         ACCEPTED,
