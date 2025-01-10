@@ -3,6 +3,9 @@ package com.service;
 import org.springframework.stereotype.Service;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -13,7 +16,7 @@ public class MailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendHackathonInvitationEmail(String to, String recipientName, String hackathonName, String role, Long teamId) throws MessagingException {
+    public void sendHackathonInvitationEmail(UUID userId, String to, String recipientName, String hackathonName, String role, Long teamId) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
@@ -38,7 +41,7 @@ public class MailService {
                 "    <p>You are invited to participate in <strong>" + hackathonName + "</strong> as a <strong>" + role + "</strong>.</p>" +
                 "    <p>We hope you accept this invitation and join the excitement of the hackathon!</p>" +
                 "    <div class=\"buttons\">" +
-                "        <a href=\"http://yourdomain.com/teams/respond?teamId=" + teamId + "&email=" + to + "&response=accept\" class=\"button accept\">Accept</a>" +
+                "        <a href=\"http://localhost:9595/teams/updateInvitation/" + teamId + "/" + userId + "/1\" class=\"button accept\">Accept</a>" +
                 "        <a href=\"http://yourdomain.com/teams/respond?teamId=" + teamId + "&email=" + to + "&response=reject\" class=\"button reject\">Reject</a>" +
                 "    </div>" +
                 "    <p>If you have any questions, feel free to reach out to us. Thank you!</p>" +

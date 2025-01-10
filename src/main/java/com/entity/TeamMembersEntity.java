@@ -22,6 +22,8 @@ public class TeamMembersEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;
+    
+    private String role;
 
     public enum Status {
         INVITED,

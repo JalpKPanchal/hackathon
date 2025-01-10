@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,12 +72,20 @@ public class TeamMemberController {
 
         // Send the invitation email
         try {
-            mailService.sendHackathonInvitationEmail(email, user.getFirstName(), "Hackathon 2025", role, teamId);
+            mailService.sendHackathonInvitationEmail(user.getUserId(),email, user.getFirstName(), "Hackathon 2025", role, teamId);
             model.addAttribute("message", "Invitation sent successfully to " + email);
         } catch (Exception e) {
             model.addAttribute("message", "Failed to send the email. Please try again.");
         }
 
         return "Invitation"; // Redirect or forward to Invitation.jsp
+    }
+    
+    @GetMapping("updateInvitation/{teamId}/{userId}/{status}")
+    public String UpdateInvitation(@PathVariable UUID userId,@PathVariable Long teamId,@PathVariable String status){
+    	System.out.println(userId);
+    	System.out.println(teamId);
+    	System.out.println(status);
+    	return "Response";
     }
 }

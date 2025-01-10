@@ -30,7 +30,7 @@ public class InvitationController {
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
             try {
-                mailService.sendHackathonInvitationEmail(email, user.getFirstName(), "Hackathon 2025", role, teamId);
+                mailService.sendHackathonInvitationEmail(null, email, user.getFirstName(), "Hackathon 2025", role, teamId);
                 model.addAttribute("message", "Invitation sent successfully!");
                 model.addAttribute("email", email);
                 model.addAttribute("role", role);
